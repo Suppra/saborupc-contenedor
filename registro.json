@@ -1,0 +1,33 @@
+{
+  "/catalogo": {
+    "nombre": "Catalogo",
+    "equipo": "Descubrimiento",
+    "url": "http://localhost:8081/catalogo.js",
+    "tipo": "funcion"
+  },
+  "/carrito": {
+    "nombre": "Carrito",
+    "equipo": "Pedidos",
+    "url": "http://localhost:8082/carrito.js",
+    "tipo": "webcomponent",
+    "etiqueta": "mfe-carrito",
+    "precargar": true
+  },
+  "/pedidos": {
+    "nombre": "Seguimiento",
+    "equipo": "Pedidos",
+    "url": "http://localhost:8084/seguimiento.js",
+    "urlPublicada": "https://suppra.github.io/saborupc-seguimiento/seguimiento.js",
+    "tipo": "webcomponent",
+    "etiqueta": "mfe-seguimiento",
+    "modulo": true,
+    "precargar": true
+  },
+  "/perfil": {
+    "nombre": "Perfil",
+    "equipo": "Plataforma",
+    "url": "http://localhost:8083/perfil.js",
+    "tipo": "webcomponent",
+    "etiqueta": "mfe-perfil"
+  }
+}

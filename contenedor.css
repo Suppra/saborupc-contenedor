@@ -1,0 +1,46 @@
+/* Estilos del contenedor: solo layout y clases con prefijo app-.
+   Los valores salen de tokens.css; cada var() trae un valor por defecto por si el origen de tokens cae. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--sabor-fuente, Arial, sans-serif);
+  background: var(--sabor-color-fondo, #f4f6f8);
+  color: var(--sabor-color-texto, #222);
+}
+.app-header {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--sabor-espacio-5, 24px);
+  padding: 14px 32px;
+  background: var(--sabor-color-primario, #0b4f8a);
+  color: #fff;
+}
+.app-logo { color: #fff; font-size: 22px; font-weight: bold; text-decoration: none; }
+.app-nav { display: flex; gap: var(--sabor-espacio-2, 8px); flex: 1; flex-wrap: wrap; }
+.app-nav a { color: #dce9f5; text-decoration: none; padding: 6px 12px; border-radius: var(--sabor-radio, 4px); }
+.app-nav a.activo, .app-nav a:hover { background: var(--sabor-color-primario-claro, #1283c8); color: #fff; }
+.app-badge {
+  display: inline-block; min-width: 22px; padding: 1px 6px; margin-left: 4px;
+  border-radius: 11px; background: var(--sabor-color-alerta, #f2c200); color: #222;
+  font-size: var(--sabor-texto-xs, 12px); font-weight: bold; text-align: center;
+}
+.app-saludo { font-size: var(--sabor-texto-sm, 14px); color: #dce9f5; }
+#app-root { max-width: 1000px; margin: var(--sabor-espacio-5, 24px) auto; padding: 0 16px; min-height: 60vh; }
+.app-aviso { color: var(--sabor-color-texto-suave, #777); }
+.app-error {
+  background: #fdecea; color: #a12a1e; padding: var(--sabor-espacio-4, 16px);
+  border-radius: var(--sabor-radio, 4px); display: flex; align-items: center; gap: var(--sabor-espacio-4, 16px);
+}
+.app-error p { margin: 0; flex: 1; }
+.app-reintentar {
+  background: #a12a1e; color: #fff; border: 0; padding: 8px 16px;
+  border-radius: var(--sabor-radio, 4px); cursor: pointer; font: inherit;
+}
+.app-notificaciones { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
+.app-toast {
+  background: var(--sabor-color-texto, #222); color: #fff; padding: 12px 16px;
+  border-radius: var(--sabor-radio-tarjeta, 8px); box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  font-size: var(--sabor-texto-sm, 14px); animation: app-entrar .2s ease-out;
+}
+.app-toast b { color: var(--sabor-color-alerta, #f2c200); }
+@keyframes app-entrar { from { opacity: 0; transform: translateY(8px); } }
+.app-footer { text-align: center; font-size: var(--sabor-texto-xs, 12px); color: var(--sabor-color-texto-suave, #777); padding: 16px; }

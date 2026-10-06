@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaborUPC 2.0</title>
+  <!-- Sistema de diseño: servido desde su propio origen (repositorio saborupc-tokens) -->
+  <link rel="stylesheet" href="http://localhost:8085/tokens.css" id="tokens-saborupc">
+  <link rel="stylesheet" href="contenedor.css">
+</head>
+<body>
+  <header class="app-header">
+    <a href="#/catalogo" class="app-logo">SaborUPC</a>
+    <nav class="app-nav">
+      <a href="#/catalogo" data-ruta="/catalogo">Catálogo</a>
+      <a href="#/carrito" data-ruta="/carrito">Carrito <span id="app-contador" class="app-badge">0</span></a>
+      <a href="#/pedidos" data-ruta="/pedidos">Mis pedidos</a>
+      <a href="#/perfil" data-ruta="/perfil">Perfil</a>
+    </nav>
+    <span id="app-saludo" class="app-saludo">Hola, invitado</span>
+  </header>
+
+  <!-- Aquí el contenedor monta el micro frontend que corresponda a la ruta -->
+  <main id="app-root"></main>
+
+  <!-- Notificaciones breves (pedido:estado) -->
+  <div id="app-notificaciones" class="app-notificaciones" aria-live="polite"></div>
+
+  <footer class="app-footer">Contenedor v2.0 · equipo Plataforma · cada sección es un micro frontend de otro equipo</footer>
+
+  <script src="contenedor.js"></script>
+</body>
+</html>
