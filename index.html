@@ -10,12 +10,17 @@
 </head>
 <body>
   <header class="app-header">
-    <a href="#/catalogo" class="app-logo">SaborUPC</a>
+    <a href="#/catalogo" class="app-logo">
+      <span class="app-logo-icono" aria-hidden="true">🍲</span>
+      <span class="app-logo-texto">Sabor<span>UPC</span><small class="app-logo-lema">Comida típica del Cesar</small></span>
+    </a>
     <nav class="app-nav">
-      <a href="#/catalogo" data-ruta="/catalogo">Catálogo</a>
-      <a href="#/carrito" data-ruta="/carrito">Carrito <span id="app-contador" class="app-badge">0</span></a>
-      <a href="#/pedidos" data-ruta="/pedidos">Mis pedidos</a>
-      <a href="#/perfil" data-ruta="/perfil">Perfil</a>
+      <div class="app-nav-grupo">
+        <a href="#/catalogo" data-ruta="/catalogo">Catálogo</a>
+        <a href="#/carrito" data-ruta="/carrito">Carrito <span id="app-contador" class="app-badge">0</span></a>
+        <a href="#/pedidos" data-ruta="/pedidos">Mis pedidos</a>
+        <a href="#/perfil" data-ruta="/perfil">Perfil</a>
+      </div>
     </nav>
     <span id="app-saludo" class="app-saludo">Hola, invitado</span>
   </header>

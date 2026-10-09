@@ -4,43 +4,98 @@
 body {
   margin: 0;
   font-family: var(--sabor-fuente, Arial, sans-serif);
-  background: var(--sabor-color-fondo, #f4f6f8);
-  color: var(--sabor-color-texto, #222);
+  background:
+    radial-gradient(circle at 100% 0, rgba(255, 194, 61, .18), transparent 40%),
+    var(--sabor-color-fondo, #fbf5ec);
+  background-attachment: fixed;
+  color: var(--sabor-color-texto, #2b1d14);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
 }
+
+/* Encabezado fijo con degradado */
 .app-header {
+  position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; flex-wrap: wrap;
   gap: var(--sabor-espacio-5, 24px);
-  padding: 14px 32px;
-  background: var(--sabor-color-primario, #0b4f8a);
+  padding: 12px 32px;
+  background: linear-gradient(110deg, var(--sabor-color-primario, #b4421f), var(--sabor-color-primario-claro, #e0662e));
   color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
 }
-.app-logo { color: #fff; font-size: 22px; font-weight: bold; text-decoration: none; }
-.app-nav { display: flex; gap: var(--sabor-espacio-2, 8px); flex: 1; flex-wrap: wrap; }
-.app-nav a { color: #dce9f5; text-decoration: none; padding: 6px 12px; border-radius: var(--sabor-radio, 4px); }
-.app-nav a.activo, .app-nav a:hover { background: var(--sabor-color-primario-claro, #1283c8); color: #fff; }
+.app-logo { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; line-height: 1.1; }
+.app-logo-icono {
+  display: grid; place-items: center; width: 40px; height: 40px; font-size: 22px;
+  background: rgba(255, 255, 255, .18); border-radius: 12px;
+}
+.app-logo-texto { font-size: 22px; font-weight: 800; letter-spacing: -.3px; }
+.app-logo-texto span { color: var(--sabor-color-alerta, #ffc23d); }
+.app-logo-lema { display: block; font-size: 11px; font-weight: 400; opacity: .85; letter-spacing: .4px; }
+
+.app-nav {
+  display: flex; gap: 4px; flex: 1; flex-wrap: wrap; justify-content: center;
+}
+.app-nav-grupo { display: flex; gap: 4px; padding: 4px; background: rgba(0, 0, 0, .14); border-radius: 999px; }
+.app-nav a {
+  color: rgba(255, 255, 255, .88); text-decoration: none; padding: 8px 16px; border-radius: 999px;
+  font-size: var(--sabor-texto-sm, 14px); font-weight: 600; transition: background .15s, color .15s;
+}
+.app-nav a:hover { background: rgba(255, 255, 255, .16); color: #fff; }
+.app-nav a.activo { background: #fff; color: var(--sabor-color-primario, #b4421f); }
 .app-badge {
-  display: inline-block; min-width: 22px; padding: 1px 6px; margin-left: 4px;
-  border-radius: 11px; background: var(--sabor-color-alerta, #f2c200); color: #222;
-  font-size: var(--sabor-texto-xs, 12px); font-weight: bold; text-align: center;
+  display: inline-block; min-width: 22px; padding: 1px 7px; margin-left: 6px;
+  border-radius: 11px; background: var(--sabor-color-alerta, #ffc23d); color: #2b1d14;
+  font-size: var(--sabor-texto-xs, 12px); font-weight: 800; text-align: center;
 }
-.app-saludo { font-size: var(--sabor-texto-sm, 14px); color: #dce9f5; }
-#app-root { max-width: 1000px; margin: var(--sabor-espacio-5, 24px) auto; padding: 0 16px; min-height: 60vh; }
-.app-aviso { color: var(--sabor-color-texto-suave, #777); }
+.app-saludo {
+  font-size: var(--sabor-texto-sm, 14px); color: #fff; font-weight: 600;
+  padding: 8px 14px; background: rgba(255, 255, 255, .16); border-radius: 999px;
+}
+
+/* Zona donde se monta cada micro frontend: una "hoja" blanca sobre el fondo crema */
+#app-root {
+  width: min(1100px, calc(100% - 32px));
+  margin: 32px auto; padding: 32px;
+  background: var(--sabor-color-superficie, #fff);
+  border: 1px solid var(--sabor-color-borde, #efe2d1);
+  border-radius: 24px;
+  box-shadow: var(--sabor-sombra, 0 6px 18px rgba(120, 60, 20, .1));
+  min-height: 60vh; flex: 1;
+  animation: app-aparecer .25s ease-out;
+}
+.app-aviso { color: var(--sabor-color-texto-suave, #8a7666); }
+
+/* Resiliencia: mensaje amigable con Reintentar */
 .app-error {
-  background: #fdecea; color: #a12a1e; padding: var(--sabor-espacio-4, 16px);
-  border-radius: var(--sabor-radio, 4px); display: flex; align-items: center; gap: var(--sabor-espacio-4, 16px);
+  background: #fff1ec; color: #8f2c14; padding: var(--sabor-espacio-5, 24px);
+  border: 1px dashed #e7a58f; border-radius: var(--sabor-radio-tarjeta, 16px);
+  display: flex; align-items: center; gap: var(--sabor-espacio-4, 16px);
 }
+.app-error::before { content: "🔌"; font-size: 32px; }
 .app-error p { margin: 0; flex: 1; }
 .app-reintentar {
-  background: #a12a1e; color: #fff; border: 0; padding: 8px 16px;
-  border-radius: var(--sabor-radio, 4px); cursor: pointer; font: inherit;
+  background: var(--sabor-color-primario, #b4421f); color: #fff; border: 0; padding: 10px 20px;
+  border-radius: 999px; cursor: pointer; font: inherit; font-weight: 700;
 }
-.app-notificaciones { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
+.app-reintentar:hover { filter: brightness(1.1); }
+
+/* Notificaciones */
+.app-notificaciones { position: fixed; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 30; }
 .app-toast {
-  background: var(--sabor-color-texto, #222); color: #fff; padding: 12px 16px;
-  border-radius: var(--sabor-radio-tarjeta, 8px); box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-  font-size: var(--sabor-texto-sm, 14px); animation: app-entrar .2s ease-out;
+  background: #2b1d14; color: #fff; padding: 12px 18px 12px 14px;
+  border-left: 5px solid var(--sabor-color-alerta, #ffc23d);
+  border-radius: 14px; box-shadow: 0 10px 24px rgba(43, 29, 20, .3);
+  font-size: var(--sabor-texto-sm, 14px); animation: app-entrar .25s ease-out;
 }
-.app-toast b { color: var(--sabor-color-alerta, #f2c200); }
-@keyframes app-entrar { from { opacity: 0; transform: translateY(8px); } }
-.app-footer { text-align: center; font-size: var(--sabor-texto-xs, 12px); color: var(--sabor-color-texto-suave, #777); padding: 16px; }
+.app-toast::before { content: "🛵"; font-size: 18px; margin-right: 10px; vertical-align: -2px; }
+.app-toast b { color: var(--sabor-color-alerta, #ffc23d); }
+@keyframes app-entrar { from { opacity: 0; transform: translateX(16px); } }
+@keyframes app-aparecer { from { opacity: 0; transform: translateY(6px); } }
+
+.app-footer { text-align: center; font-size: var(--sabor-texto-xs, 12px); color: var(--sabor-color-texto-suave, #8a7666); padding: 8px 16px 24px; }
+
+@media (max-width: 700px) {
+  .app-header { padding: 10px 16px; gap: 12px; }
+  .app-nav { justify-content: flex-start; order: 3; flex-basis: 100%; }
+  #app-root { padding: 20px; margin: 16px auto; border-radius: 18px; }
+}
